@@ -132,6 +132,21 @@ Node *deleteNode(Node *node, int value)
     return node;
 }
 
+//void inOrderNoRecursive(Node *node) {
+//  Node *node_stack[100];
+//  int top = -1;
+//  Node *current = node;
+//  while (node != NULL || top != -1) {
+//    while (node != NULL) {
+//      node_stack[++top] = node;
+//      node = node->left;
+//    }
+//    node = node_stack[top--];
+//   printf(" %d", node->value);
+//    node = node->right;
+//  }
+//}
+
 // Liberate space
 void freeTree(Node *node)
 {
@@ -183,6 +198,9 @@ int main()
                 scanf("%d", &value);
                 root = deleteNode(root, value);
                 break;
+            //case 5:
+            //    inOrderNoRecursive(root);
+            //    break;
             default:
                 if (input != 0) {
                     printf("Invalid option\n");
