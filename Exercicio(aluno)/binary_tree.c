@@ -22,6 +22,26 @@ void printInOrder(Node *node)
     }
 }
 
+void printPosOrder(Node *node)
+{
+    if (node != NULL)
+    {
+        printPosOrder(node->left);
+        printPosOrder(node->right);
+        printf("%d ", node->value);
+    }
+}
+
+void printPreOrder(Node *node)
+{
+    if (node != NULL)
+    {
+        printPreOrder(node->left);
+        printf("%d ", node->value);
+        printPreOrder(node->right);
+    }
+}
+
 // Find element in tree
 void findNode(Node *node, int value)
 {
@@ -132,20 +152,20 @@ Node *deleteNode(Node *node, int value)
     return node;
 }
 
-//void inOrderNoRecursive(Node *node) {
-//  Node *node_stack[100];
-//  int top = -1;
-//  Node *current = node;
-//  while (node != NULL || top != -1) {
-//    while (node != NULL) {
-//      node_stack[++top] = node;
-//      node = node->left;
-//    }
-//    node = node_stack[top--];
-//   printf(" %d", node->value);
-//    node = node->right;
-//  }
-//}
+// void inOrderNoRecursive(Node *node) {
+//   Node *node_stack[100];
+//   int top = -1;
+//   Node *current = node;
+//   while (node != NULL || top != -1) {
+//     while (node != NULL) {
+//       node_stack[++top] = node;
+//       node = node->left;
+//     }
+//     node = node_stack[top--];
+//    printf(" %d", node->value);
+//     node = node->right;
+//   }
+// }
 
 // Liberate space
 void freeTree(Node *node)
@@ -173,39 +193,47 @@ int main()
     {
         insertNode(&root, values[i]);
     }
-    while (input != 0) {
+    while (input != 0)
+    {
         printf("Select an option:\n");
-        printf("1-Insert Value\n2-Find Value\n3-Print Tree In Order\n4-Delete Value\n0-Close\n");
+        printf("1-Insert Value\n2-Find Value\n3-Delete Value\n4-Print in Order\n5-Print Pos Order\n6-Print Pre Order\n0-Close\n");
         scanf("%d", &input);
         // Case switch to input
-        switch (input) {
-            case 1:
-                printf("Insert a value: ");
-                scanf("%d", &value);
-                insertNode(&root, value);
-                break;
-            case 2:
-                printf("Insert a value: ");
-                scanf("%d", &value);
-                findNode(root, value);
-                break;
-            case 3:
-                printInOrder(root);
-                printf("\n");
-                break;
-            case 4:
-                printf("Insert a value: ");
-                scanf("%d", &value);
-                root = deleteNode(root, value);
-                break;
-            //case 5:
-            //    inOrderNoRecursive(root);
-            //    break;
-            default:
-                if (input != 0) {
-                    printf("Invalid option\n");
-                }
-                break;
+        switch (input)
+        {
+        case 1:
+            printf("Insert a value: ");
+            scanf("%d", &value);
+            insertNode(&root, value);
+            break;
+        case 2:
+            printf("Insert a value: ");
+            scanf("%d", &value);
+            findNode(root, value);
+            break;
+        case 3:
+            printf("Insert a value: ");
+            scanf("%d", &value);
+            root = deleteNode(root, value);
+            break;
+        case 4:
+            printInOrder(root);
+            printf("\n");
+            break;
+        case 5:
+            printPosOrder(root);
+            printf("\n");
+            break;
+        case 6:
+            printPreOrder(root);
+            printf("\n");
+            break;
+        default:
+            if (input != 0)
+            {
+                printf("Invalid option\n");
+            }
+            break;
         }
     }
     printf("Closing app!\n");
