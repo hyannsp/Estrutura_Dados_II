@@ -128,7 +128,7 @@ int main()
     int input = -1;
 
     while (input != 0) {
-        printf("---------------------------Red Black Tree------------------------------\n");
+        printf("------------------------------Treap Tree------------------------------\n");
         printf("Select your option:\n1-Insert Value\n2-Find Value\n3-Delete Value\n4-Display Tree\n5-Insert Random Values\n0-Exit\n ");
         scanf("%d", &input);
         switch (input) {
@@ -172,7 +172,7 @@ int main()
         }
     }
 
-    // Free the memory of the tree before exiting
+    
     free_tree(root);
 
     printf("Closing application!\n");
